@@ -90,11 +90,16 @@ if __name__ == "__main__":
     test_image = tf.keras.preprocessing.image.load_img(
         "dataset/single_prediction/image.png", target_size=(64, 64)
     )
+    
     test_image = tf.keras.preprocessing.image.img_to_array(test_image)
+    
     test_image = np.expand_dims(test_image, axis=0)
+    
     result = classifier.predict(test_image)
+    
     # training_set.class_indices
     if result[0][0] == 0:
         prediction = "Normal"
+        
     if result[0][0] == 1:
         prediction = "Abnormality detected"
